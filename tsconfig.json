@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "outDir": "./lib",
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "strictNullChecks": true,
+    "declaration": false,
+    "removeComments": false,
+    "noUnusedLocals": true,
+    "lib": [
+      "dom",
+      "es5",
+      "es2015",
+      "es2015.core"
+    ]
+  }
+}

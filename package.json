@@ -1,0 +1,33 @@
+{
+  "name": "ghoul-soul",
+  "version": "1.1.1",
+  "description": "Ghoul-soul is an state management for ghoulapp and any other app.",
+  "main": "lib/index.js",
+  "repository": "https://github.com/whatwewant/ghoul-soul",
+  "author": "uniquecolesmith@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf -f lib && tsc",
+    "deploy:example": "gh-pages -d example/gh-pages"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.53",
+    "gh-pages": "^1.0.0",
+    "redux": "^3.7.2",
+    "remote-redux-devtools": "^0.5.12",
+    "remotedev-server": "^0.2.4",
+    "rimraf": "^2.6.1",
+    "ruban": "^0.2.1",
+    "typescript": "^2.5.2"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/h.js",
+    "lib/types.js",
+    "lib/ghoul.js",
+    "lib/vdom"
+  ],
+  "dependencies": {
+    "invariant": "^2.2.2"
+  }
+}
