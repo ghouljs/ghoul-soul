@@ -1,13 +1,8 @@
 import { MiddlewareAPI, Action, Dispatch, GetState } from '../types';
 
+import { warning } from './utils';
 import { effects } from './effects';
 import { getComputes } from './computes';
-
-function warning() {
-  throw new Error(
-    'You are calling "dispatch" or "getState" without create middleware!'
-  );
-}
 
 export let dispatch: Dispatch = warning;
 export let getState: GetState = warning;

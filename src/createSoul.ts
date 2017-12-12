@@ -1,5 +1,7 @@
 import { Store } from 'redux';
 import { Options } from './types';
+import { warning } from './_internal/utils';
+
 import { addModel, getModels } from './_internal/model';
 import { getStates } from './_internal/state';
 import { getReducers } from './_internal/reducers';
@@ -9,8 +11,6 @@ import { getSubscriptions, runSubscriptions } from './_internal/subscriptions';
 
 import createStore from './utils/createStore';
 
-let store: Store<any>;
-
 const DEFAULT_OPTIONS = {
   plugins: {},
 };
@@ -19,8 +19,9 @@ export default function createSoul(options: Options = DEFAULT_OPTIONS) {
   return {
     model: addModel,
 
-    dispatch: (store || {}).dispatch,
-    getState: (store || {}).getState,
+    dispatch: warning,
+    getState: warning,
+    subscribe: warning,
 
     _api: {
       getModels,
@@ -31,19 +32,21 @@ export default function createSoul(options: Options = DEFAULT_OPTIONS) {
       getSubscriptions,
     },
 
-    _store: store,
+    _store: null,
 
     start: function () {
       const initialState = getStates();
       const reducers = getReducers();
     
-      store = createStore(reducers, initialState, options.plugins || {});
+      const store: Store<any> = createStore(reducers, initialState, options.plugins || {});
 
       // run sunscriptions
       runSubscriptions();
     
       this.dispatch = store.dispatch;
       this.getState = store.getState;
+      this.subscribe = store.subscribe;
+
       this._store = store;
 
       return this;

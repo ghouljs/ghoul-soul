@@ -10,3 +10,9 @@ export function collect(store: MODELSInterface, type: Type, wrap: Function, inje
       ...wrap(nextNamespace, (store[nextNamespace] as any)[type], inject),
     }), {});
 }
+
+export function warning() {
+  throw new Error(
+    'You are calling "dispatch" or "getState" or "subscribe" without create middleware!'
+  );
+}
