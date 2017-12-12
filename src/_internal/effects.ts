@@ -13,7 +13,7 @@ function wrapEffect(namespace: string, effects: Effect, apis?: APIs): Effect {
     .reduce(
       (lastValue, nextKey) => ({
         ...lastValue,
-        [`${namespace}${MODEL_SEPERATOR}${nextKey}`]: function (action: Action, middlewareAPI: MiddlewareAPI) {
+        [`${namespace}${MODEL_SEPERATOR}${nextKey}`]: async function (action: Action, middlewareAPI: MiddlewareAPI) {
           return effects[nextKey].call(null, action, { ...apis, ...middlewareAPI });
         },
       }),

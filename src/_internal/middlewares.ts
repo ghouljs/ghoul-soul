@@ -17,10 +17,12 @@ export const middlewareAPI: MiddlewareAPI = {
   getState: warning,
 };
 
-export function createMiddleware() {
+export function createMiddleware(hook = (middlewareAPI: MiddlewareAPI) => null) {
   return (middlewareAPIs: MiddlewareAPI) => {
     dispatch = middlewareAPI.dispatch = middlewareAPIs.dispatch;
     getState = middlewareAPI.getState = middlewareAPIs.getState;
+
+    hook({ dispatch, getState });
 
     return (next: Dispatch) => (action: Action) => {
       let result = next(action);

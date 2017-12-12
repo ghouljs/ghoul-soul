@@ -1,5 +1,6 @@
 import { Compute, APIs } from '../types';
-import { MODEL_SEPERATOR } from './utils';
+// import { MODEL_SEPERATOR } from './utils';
+import { getState } from './middlewares';
 
 export const computes: Compute = {};
 
@@ -9,8 +10,8 @@ function wrapComputes(namespace: string, computes: Compute, apis?: APIs): Comput
     .reduce(
       (lastValue, nextKey) => ({
         ...lastValue,
-        [`${namespace}${MODEL_SEPERATOR}${nextKey}`]: function () {
-          return (computes[nextKey] as any).call(null, apis);
+        [`${nextKey}`]: function () { // ${namespace}${MODEL_SEPERATOR}
+          return (computes[nextKey] as any).call(null, { ...apis, getState });
         },
       }),
       {},

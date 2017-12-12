@@ -32,7 +32,7 @@ export interface MiddlewareAPI {
 }
 
 export interface APIs {
-  getState: GetState;
+  // getState: GetState;
   [key: string]: Function;
 }
 
