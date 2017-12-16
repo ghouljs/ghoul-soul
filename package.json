@@ -1,6 +1,6 @@
 {
   "name": "ghoul-soul",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ghoul-soul is an state management for ghoulapp and any other app.",
   "main": "lib/index.js",
   "repository": "https://github.com/whatwewant/ghoul-soul",
@@ -21,11 +21,7 @@
     "typescript": "^2.5.2"
   },
   "files": [
-    "lib/index.js",
-    "lib/h.js",
-    "lib/types.js",
-    "lib/ghoul.js",
-    "lib/vdom"
+    "lib/*"
   ],
   "dependencies": {
     "invariant": "^2.2.2"
